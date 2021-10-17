@@ -45,7 +45,7 @@ public class GameplayManager : MonoBehaviour
         return "Prefabs/" + tetrominoName;
     }
 
-    private void GenerateTetromino()
+    public void GenerateTetromino()
     {
         GameObject tetromino = (GameObject)Instantiate(Resources.Load(GetRandomTetromino(), typeof(GameObject)),
                                                       new Vector3(5.0f, 18.0f, 0.0f),

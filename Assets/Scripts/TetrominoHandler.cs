@@ -92,7 +92,13 @@ public class TetrominoHandler : MonoBehaviour
         transform.position += Vector3.down;
 
         if (!IsInValidPosition())
+        {
             transform.position += Vector3.up;
+
+            enabled = false;
+
+            gameplayManager.GenerateTetromino();
+        }
     }
 
     private void MoveHorizontal(Vector3 direction)
