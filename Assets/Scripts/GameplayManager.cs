@@ -5,22 +5,22 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     [SerializeField]
-    private int score = 0;
+    public int score = 0;
 
     [SerializeField]
     private Transform tetrominoContainer;
 
     [SerializeField]
-    private int scoreOneLine = 20;
+    private int scoreOneLine = 10;
 
     [SerializeField]
-    private int scoreTwoLine = 50;
+    private int scoreTwoLine = 25;
 
     [SerializeField]
-    private int scoreThreeLine = 100;
+    private int scoreThreeLine = 50;
 
     [SerializeField]
-    private int scoreFourLine = 250;
+    private int scoreFourLine = 100;
 
     private int lengthDestroyRows = 0;
 
@@ -32,6 +32,12 @@ public class GameplayManager : MonoBehaviour
     private void Start()
     {
         GenerateTetromino();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void UpdateScore()
@@ -168,8 +174,6 @@ public class GameplayManager : MonoBehaviour
     public void GameOver(TetrominoHandler tetromino)
     {
         Debug.Log("Game is Over! Your score is " + score);
-
-        enabled = false;
 
         Destroy(tetrominoContainer.gameObject);
     }
